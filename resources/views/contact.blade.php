@@ -2,7 +2,7 @@
 @section('title','Contact')
 @section('content')
     <main class="container">
-        <script src="./js/contact.js"></script>
+        <script src="scripts/contact.js"></script>
         <section class="introduction">
             <p class="introduction__caption">THE ULTIMATE LUXURY EXPERIENCE</p>
             <h1 class="introduction__title">New Details</h1>

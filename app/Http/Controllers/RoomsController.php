@@ -8,9 +8,15 @@ use Illuminate\View\View;
 
 class RoomsController extends Controller
 {
-    public function show(string $id): View {
+    public function getRoom(string $id): View {
         return  view('roomDetails',[
-            'id' => Rooms::findOrFail($id)
+            'room' => Rooms::findOrFail($id)
+        ]);
+    }
+
+    public function view(): View {
+        return view('rooms',[
+            'rooms' => Rooms::all()
         ]);
     }
 }

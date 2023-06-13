@@ -2,7 +2,7 @@
 @section('title','Offers')
 @section('content')
     <main class="container">
-    <script src="./js/offers.js"></script>
+    <script src="scripts/offers.js"></script>
         <section class="introduction">
             <p class="introduction__caption">THE ULTIMATE LUXURY EXPERIENCE</p>
             <h1 class="introduction__title">Our Offers</h1>

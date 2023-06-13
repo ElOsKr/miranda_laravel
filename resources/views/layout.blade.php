@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Old+Standard+TT:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="./js/header.js"></script>
+    <script src="scripts/header.js"></script>
     <title>@yield('title')</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
                 <img src="./assets/header/header_close_icon.png" alt="menuClose" id="closeMenu">
             </div>
             <div class="header__content">
-                <a href="index">
+                <a href="/">
                     <div class="header__content-logo">
                         <p class="header__content-logo logo__letter">H</p>
                         <div class="header__content-name logo__name">
@@ -32,10 +32,10 @@
                 </a>
                 <div class="header__content-menu">
                     <ul>
-                        <li><a href="./aboutUs.php">About us</a></li>
-                        <li><a href="./rooms.php">Rooms</a></li>
-                        <li><a href="./offers.php">Offers</a></li>
-                        <li><a href="./contact.php">Contact</a></li>
+                        <li><a href="./aboutUs">About us</a></li>
+                        <li><a href="./rooms">Rooms</a></li>
+                        <li><a href="./offers">Offers</a></li>
+                        <li><a href="./contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="header__content-options">

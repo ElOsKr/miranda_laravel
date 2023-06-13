@@ -2,7 +2,7 @@
 @section('title','Room Details')
 @section('content')
     <main class="container">
-    <script src="./js/roomDetails.js"></script>
+    <script src="scripts/roomDetails.js"></script>
         <section class="introduction">
             <p class="introduction__caption">THE ULTIMATE LUXURY EXPERIENCE</p>
             <h1 class="introduction__title">Ultimate Room</h1>
@@ -46,15 +46,7 @@
                 </div>
                 <input type="submit" class="form__btn" value="CHECK AVAILABILITY" />
                 <p class="details__availability">
-                    @if($availability === "available")
-                        The room is available between {{$_POST['checkIn']}} and {{$_POST['checkOut']}}
-                    @elseif($availability === "not available")
-                        The room is <span style="color: red;">NOT</span> available between {{$_POST['checkIn']}} and {{$_POST['checkOut']}}
-                    @elseif($availability === "check date error")
-                        CheckIn Date <span style="color: red;">CAN NOT</span> be greater than CheckOut
-                    @elseif($availability === "no data")
-                        No data introduced
-                    @endif
+
                 </p>
             </form>
             <p class="details__description">
@@ -78,7 +70,7 @@
                 <p><img 
                 src="./assets/roomDetails/details_{{json_decode($room['room_amenities'])[$i]}}_icon.png" 
                 alt="{{json_decode($room['room_amenities'])[$i]}}"> 
-                {{$amenities[json_decode($room['room_amenities'])[$i]]}}</p>
+                {{Amenities::getAmenitie(json_decode($room['room_amenities'])[$i])}}</p>
 
                 @endfor
                 

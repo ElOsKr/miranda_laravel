@@ -26,12 +26,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/rooms', function () {
-    return view('rooms');
-});
+Route::get('/rooms', [RoomsController::class,'view']);
 
 Route::get('/offers', function () {
     return view('offers');
 });
 
-Route::get('/rooms/{id}', [RoomsController::class,'show']);
+Route::get('/roomDetails/{id}', [RoomsController::class,'getRoom']);
