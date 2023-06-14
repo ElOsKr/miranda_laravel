@@ -1,13 +1,6 @@
-document.addEventListener("readystatechange", cargarEventos, false);
-function cargarEventos(){
-    document.getElementById("contactForm").addEventListener("submit",formSubmit)
-}
-
-function formSubmit(e){
+function formSubmit(){
 
     document.getElementById("formFields").classList.remove('error')
-    document.getElementById("formSuccess").classList.remove('success')
-    document.getElementById("formError").classList.remove('error')
 
     let userName = document.getElementById("username").value;
     let userEmail = document.getElementById("useremail").value;
@@ -26,8 +19,7 @@ function formSubmit(e){
     for(var key in form){
         if(form[key] === ""){
             document.getElementById("formFields").classList.add('error')
-            e.preventDefault();
-            return;
+            return false;
         } 
     }
 

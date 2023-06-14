@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rooms extends Model
+class Contact extends Model
 {
-    use HasFactory;
-    protected $primaryKey = 'room_id';
+    use HasUuids;
+    protected $primaryKey = 'contact_id';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 }

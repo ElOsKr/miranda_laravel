@@ -11,6 +11,14 @@
             </div>
         </section>
         <section class="information">
+            @if(Session::has('success'))
+                <p id="formSuccess" class="formSuccess">
+                    {{ Session::get('success') }}
+                    @php
+                        Session::forget('success');
+                    @endphp
+                </p>
+            @endif   
             <div class="information__data">
                 <div class="data__container">
                     <img src="./assets/contact/contact_mail_icon.png" alt="mailIcon">
@@ -68,7 +76,7 @@
             </div>
         </section>
         <section class="contact">
-            <form id="contactForm" method="POST" action="{{url('contact')}}">
+            <form id="contactForm" method="POST" action="{{url('contact')}}" onsubmit="return formSubmit()">
             {{ csrf_field() }}
                 <div class="contact__container">
                     <input type="text" name="username" id="username" class="contact__username" placeholder="Your full name">
@@ -78,15 +86,7 @@
                     <textarea name="usermessage" id="usermessage" cols="30" rows="10" class="contact__usermessage" placeholder="Enter message" ></textarea>                    
                 </div>            
                 <input type="submit" class="contact__btn" value="SEND" id="formBtn"/>
-                <p id="formFields" class="formFields">Must fill all fields</p>
-                @if(Session::has('success'))
-                    <p id="formSuccess" class="formSuccess">
-                        {{ Session::get('success') }}
-                        @php
-                            Session::forget('success');
-                        @endphp
-                    </p>
-                @endif           
+                <p id="formFields" class="formFields">Must fill all fields</p>        
             </form>
         </section>
     </main>
