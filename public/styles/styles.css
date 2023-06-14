@@ -2021,7 +2021,7 @@
   width: 258px;
 }
 
-.formSuccess, .formFields, .formError {
+.formFields, .formError {
   display: none;
 }
 

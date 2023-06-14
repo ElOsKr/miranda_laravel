@@ -68,7 +68,8 @@
             </div>
         </section>
         <section class="contact">
-            <form id="contactForm" method="post">
+            <form id="contactForm" method="POST" action="{{url('contact')}}">
+            {{ csrf_field() }}
                 <div class="contact__container">
                     <input type="text" name="username" id="username" class="contact__username" placeholder="Your full name">
                     <input type="tel" name="usertel" id="usertel" class="contact__usertel" placeholder="Add phone number (9 digits)" pattern="[0-9]{9}">
@@ -78,8 +79,14 @@
                 </div>            
                 <input type="submit" class="contact__btn" value="SEND" id="formBtn"/>
                 <p id="formFields" class="formFields">Must fill all fields</p>
-                <p id="formSuccess" class="formSuccess">Comment sent successfully</p>
-                <p id="formError" class="formError">Comment sent successfully</p>              
+                @if(Session::has('success'))
+                    <p id="formSuccess" class="formSuccess">
+                        {{ Session::get('success') }}
+                        @php
+                            Session::forget('success');
+                        @endphp
+                    </p>
+                @endif           
             </form>
         </section>
     </main>

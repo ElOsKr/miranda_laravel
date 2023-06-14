@@ -75,7 +75,7 @@
                                 <img src="./assets/rooms/rooms_room_cocktail.png" alt="cocktailIcon">
                             </div>
                             <div class="room__img">
-                                <a href="roomDetails?id={{$rooms[$i]['room_id']}}">
+                                <a href="roomDetails/{{$rooms[$i]['room_id']}}">
                                     <img src={{$rooms[$i]['room_photo']}} alt={{$rooms[$i]['room_type']}}> 
                                 </a>                                
                             </div>

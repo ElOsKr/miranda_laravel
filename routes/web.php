@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class,'view']);
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
@@ -25,6 +25,8 @@ Route::get('/aboutUs', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::post('/contact',[ContactController::class,'contactCreate']);
 
 Route::get('/rooms', [RoomsController::class,'view']);
 

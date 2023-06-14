@@ -14,9 +14,15 @@ class RoomsController extends Controller
         ]);
     }
 
-    public function view(): View {
-        return view('rooms',[
-            'rooms' => Rooms::all()
-        ]);
+    public function view($numberRooms = "all"): View {
+        if($numberRooms === "all"){
+            return view('rooms',[
+                'rooms' => Rooms::all()
+            ]);    
+        }else{
+            return view('rooms',[
+                'rooms' => Rooms::take($numberRooms)
+            ]);            
+        }
     }
 }
