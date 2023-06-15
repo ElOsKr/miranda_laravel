@@ -8,12 +8,6 @@ use Illuminate\View\View;
 
 class RoomsController extends Controller
 {
-    public function getRoom(string $id): View {
-        return  view('roomDetails',[
-            'room' => Room::findOrFail($id)
-        ]);
-    }
-
     public function view($numberRooms = "all"): View {
         if($numberRooms === "all"){
             return view('rooms',[

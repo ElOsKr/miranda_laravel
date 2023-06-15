@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="{{asset('styles/styles.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Old+Standard+TT:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="scripts/header.js"></script>
+    <script src="{{asset('scripts/header.js')}}"></script>
     <title>@yield('title')</title>
 </head>
 <body>
     <header class="header">
         <nav class="header__nav">
             <div class="header__menu">
-                <img src="./assets/header/header_open_icon.png" alt="menuOpen" id="openMenu" class="active">
-                <img src="./assets/header/header_close_icon.png" alt="menuClose" id="closeMenu">
+                <img src="{{asset('./assets/header/header_open_icon.png')}}" alt="menuOpen" id="openMenu" class="active">
+                <img src="{{asset('./assets/header/header_close_icon.png')}}" alt="menuClose" id="closeMenu">
             </div>
             <div class="header__content">
                 <a href="/">
@@ -39,8 +39,8 @@
                     </ul>
                 </div>
                 <div class="header__content-options">
-                    <img src="./assets/header/header_user_icon.png" alt="userIcon">
-                    <img src="./assets/header/header_search_icon.png" alt="searchIcon">
+                    <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
+                    <img src="{{asset('./assets/header/header_search_icon.png')}}" alt="searchIcon">
                 </div>
             </div>
         </nav>
@@ -66,19 +66,19 @@
             </p>
             <div class="footer__links">
                 <a href="#">
-                    <img src="./assets/footer/footer_facebook_icon.png" alt="facebookIcon">
+                    <img src="{{asset('./assets/footer/footer_facebook_icon.png')}}" alt="facebookIcon">
                 </a>
                 <a href="#">
-                    <img src="./assets/footer/footer_twitter_icon.png" alt="twitterIcon">
+                    <img src="{{asset('./assets/footer/footer_twitter_icon.png')}}" alt="twitterIcon">
                 </a>
                 <a href="#">
-                    <img src="./assets/footer/footer_behance_icon.png" alt="behanceIcon">
+                    <img src="{{asset('./assets/footer/footer_behance_icon.png')}}" alt="behanceIcon">
                 </a>
                 <a href="#">
-                    <img src="./assets/footer/footer_linkedin_icon.png" alt="linkedinIcon">
+                    <img src="{{asset('./assets/footer/footer_linkedin_icon.png')}}" alt="linkedinIcon">
                 </a>
                 <a href="#">
-                    <img src="./assets/footer/footer_youtube_icon.png" alt="youtubeIcon">
+                    <img src="{{asset('./assets/footer/footer_youtube_icon.png')}}" alt="youtubeIcon">
                 </a>
             </div>
             <div class="footer__services">
@@ -107,21 +107,21 @@
                     Contact Us.
                 </h4>
                 <div class="contact-footer">
-                    <img src="./assets/footer/footer_number_icon.png" alt="numberIcon">
+                    <img src="{{asset('./assets/footer/footer_number_icon.png')}}" alt="numberIcon">
                     <div>
                         <h4>Phone Number</h4>
                         <p>+987 876 765 76 577</p>                        
                     </div>
                 </div>
                 <div class="contact-footer">
-                    <img src="./assets/footer/footer_mail_icon.png" alt="mailIcon">
+                    <img src="{{asset('./assets/footer/footer_mail_icon.png')}}" alt="mailIcon">
                     <div>
                         <h4>Phone Number</h4>
                         <p>+987 876 765 76 577</p>                        
                     </div>
                 </div>
                 <div class="contact-footer">
-                    <img src="./assets/footer/footer_location_icon.png" alt="locationIcon">
+                    <img src="{{asset('./assets/footer/footer_location_icon.png')}}" alt="locationIcon">
                     <div>
                         <h4>Phone Number</h4>
                         <p>+987 876 765 76 577</p>                        

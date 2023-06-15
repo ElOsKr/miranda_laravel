@@ -2,7 +2,7 @@
 @section('title','Room Details')
 @section('content')
     <main class="container">
-    <script src="scripts/roomDetails.js"></script>
+    <script src="{{asset('scripts/roomDetails.js')}}"></script>
         <section class="introduction">
             <p class="introduction__caption">THE ULTIMATE LUXURY EXPERIENCE</p>
             <h1 class="introduction__title">Ultimate Room</h1>
@@ -68,7 +68,7 @@
                 @for($i=0 ; $i<count(json_decode($room['room_amenities'])) ; $i++ )
 
                 <p><img 
-                src="./assets/roomDetails/details_{{json_decode($room['room_amenities'])[$i]}}_icon.png" 
+                src="{{asset('./assets/roomDetails/details_')}}{{json_decode($room['room_amenities'])[$i]}}_icon.png" 
                 alt="{{json_decode($room['room_amenities'])[$i]}}"> 
                 {{Amenities::getAmenitie(json_decode($room['room_amenities'])[$i])}}</p>
 
@@ -81,7 +81,7 @@
                         ✓
                     </span>
                     <div class="founder__img">
-                        <img src="./assets/roomDetails/details_founder.jpg" alt="founderGod">
+                        <img src="{{asset('./assets/roomDetails/details_founder.jpg')}}" alt="founderGod">
                     </div>
                 </div>
                 <h1 class="founder__name">
@@ -125,13 +125,13 @@
                                     <img src={{$relatedRooms[$i]['room_photo']}} alt="roomImg" class="room__img">
                                 </div>
                                 <div class="room__options">
-                                    <img src="./assets/rooms/rooms_room_bed.png" alt="bedIcon">
-                                    <img src="./assets/rooms/rooms_room_wifi.png" alt="wifiIcon">
-                                    <img src="./assets/rooms/rooms_room_car.png" alt="carIcon">
-                                    <img src="./assets/rooms/rooms_room_winter.png" alt="winterIcon">
-                                    <img src="./assets/rooms/rooms_room_gym.png" alt="gymIcon">
-                                    <img src="./assets/rooms/rooms_room_noSmoking.png" alt="noSmokingIcon">
-                                    <img src="./assets/rooms/rooms_room_cocktail.png" alt="cocktailIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_bed.png')}}" alt="bedIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_wifi.png')}}" alt="wifiIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_car.png')}}" alt="carIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_winter.png')}}" alt="winterIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_gym.png')}}" alt="gymIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_noSmoking.png')}}" alt="noSmokingIcon">
+                                    <img src="{{asset('./assets/rooms/rooms_room_cocktail.png')}}" alt="cocktailIcon">
                                 </div>
                                 <div class="room__description">
                                     <h2 class="room__title">
@@ -144,7 +144,7 @@
                                         <p class="room__price">
                                             ${{$relatedRooms[$i]['room_price'] - round($relatedRooms[$i]['room_price']*($relatedRooms[$i]['room_offer']/100))}}/Night
                                         </p>
-                                        <a class="room__booking" href="roomDetails?id={{$relatedRooms[$i]['room_id']}}">
+                                        <a class="room__booking" href="/roomDetails/{{$relatedRooms[$i]['room_id']}}">
                                             Booking Now
                                         </a>
                                     </div>
