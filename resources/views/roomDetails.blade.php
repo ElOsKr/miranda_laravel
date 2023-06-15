@@ -32,7 +32,8 @@
             <div class="details__img">
                 <img src={{$room["room_photo"]}} alt="doubleBed">
             </div>
-            <form class="details__form" method="post" action="roomDetails.php?id={{$room['room_id']}}">
+            <form class="details__form" method="post" action="{{url('roomDetails/'.$room["room_id"])}}">
+                {{ csrf_field() }}
                 <h2 class="form__title">
                     Check Availability
                 </h2>
@@ -46,7 +47,10 @@
                 </div>
                 <input type="submit" class="form__btn" value="CHECK AVAILABILITY" />
                 <p class="details__availability">
-
+                    {{ Session::get('success') }}
+                    @php
+                        Session::forget('success');
+                    @endphp
                 </p>
             </form>
             <p class="details__description">

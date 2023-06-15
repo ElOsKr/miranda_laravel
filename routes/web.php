@@ -36,3 +36,5 @@ Route::get('/offers', function () {
 });
 
 Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);
+
+Route::post('/roomDetails/{id}', [RoomDetailsController::class,'checkAvailavility']);
