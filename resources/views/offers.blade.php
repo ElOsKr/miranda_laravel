@@ -42,11 +42,11 @@
                                 <p><img 
                                 src="./assets/roomDetails/details_{{json_decode($offers[$i]['room_amenities'])[$j]}}_icon.png" 
                                 alt="{{json_decode($offers[$i]['room_amenities'])[$j]}}"> 
-                                {{$amenities[json_decode($offers[$i]['room_amenities'])[$j]]}}</p>
+                                {{Amenities::getAmenitie(json_decode($offers[$i]['room_amenities'])[$j])}}</p>
 
                             @endfor
                             </div>
-                            <a class="offer__btn" href="roomDetails?id={{$offers[$i]['room_id']}}">
+                            <a class="offer__btn" href="roomDetails/{{$offers[$i]['room_id']}}">
                                 BOOK NOW
                             </a>
                         </div>
@@ -90,7 +90,7 @@
                                     <p class="room__price">
                                         ${{$populars[$i]['room_price'] - round($populars[$i]['room_price']*($populars[$i]['room_offer']/100))}}/Night
                                     </p>
-                                    <a class="room__booking" href="roomDetails?id={{$populars[$i]['room_id']}}">
+                                    <a class="room__booking" href="roomDetails/{{$populars[$i]['room_id']}}">
                                         Booking Now
                                     </a>
                                 </div>

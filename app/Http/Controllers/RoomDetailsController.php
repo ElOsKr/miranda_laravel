@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
+DB::enableQueryLog();
+
 class RoomDetailsController extends Controller
 {
 
@@ -40,24 +42,29 @@ class RoomDetailsController extends Controller
             $checkIn = $request->input('checkIn');
             $checkOut = $request->input('checkOut');
             $availability = false;
-            $room = Room::findOrFail($id);
-            $relatedRooms = RoomDetailsController::relatedRooms($id);
-            $availablesRooms = Room::select(DB::raw(
-                "*"))->where(DB::raw(" 
-                    room_id not in(select room_id from bookings where
-                                booking_checkin > $checkIn and booking_checkin < $checkOut or
-                                booking_checkout > $checkIn and booking_checkout < $checkOut or
-                                booking_checkin > $checkIn and booking_checkout < $checkOut or
-                                booking_checkin < $checkIn and booking_checkout > $checkOut
-                            )")
+            $availablesRooms = Room::query(DB::raw(
+                "select * from rooms"))->whereRaw("room_id not in (select room_id from bookings where
+                                (booking_checkin > $checkIn and booking_checkin < $checkOut) or
+                                (booking_checkout > $checkIn and booking_checkout < $checkOut) or
+                                (booking_checkin > $checkIn and booking_checkout < $checkOut) or
+                                (booking_checkin < $checkIn and booking_checkout > $checkOut)
+                            )"
             )->get();
-            foreach($availablesRooms as $individualRoom){
-                if($individualRoom['room_id'] === $id){
+
+            foreach($availablesRooms as $key){
+                if($key['room_id'] === $id){
                     $availability = true;
+                    break;
                 }
             }
 
-            return back()->with('success', 'Check');    
+            if($availability === true){
+                return back()->with('success', "The room is available between $checkIn and $checkOut".DB::getQueryLog()[0]["query"].count($availablesRooms));  
+            }else{
+                return back()->with('success', "The room is not available between $checkIn and $checkOut".DB::getQueryLog()[0]["query"].count($availablesRooms)); 
+            }
+
+              
 
         }catch(ModelNotFoundException $e){
             return view('rooms',[
