@@ -11,7 +11,7 @@
             </div>
         </section>
         <section class="rooms-rooms">
-            <!-- <p class="room_msg">{{$rooms[0]}}</p> -->
+            <p class="room_msg">{{$message}}</p>
             <div class="swiper-rooms">
                 <div class="swiper-wrapper">
                     <div class="room__section swiper-slide">

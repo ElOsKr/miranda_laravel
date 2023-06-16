@@ -9,7 +9,8 @@
             <button class="introduction__btn btn-tour">TAKE A TOUR</button>
             <button class="introduction__btn btn-learn">LEARN MORE</button>
         </section>
-        <form class="availability" action="rooms" method="get">
+        <form class="availability" action="rooms" method="post">
+            {{ csrf_field() }}
             <div class="availability__arrival">
                 <label for="arrivalDate">Arrival Date</label>
                 <input type="date" name="arrivalDate" id="arrivalDate" class="availability__input" required>

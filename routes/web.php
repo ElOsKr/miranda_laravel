@@ -32,6 +32,8 @@ Route::post('/contact',[ContactController::class,'contactCreate']);
 
 Route::get('/rooms', [RoomsController::class,'view']);
 
+Route::post('/rooms',[RoomsController::class, 'getAvailables']);
+
 Route::get('/offers', [OffersController::class,'getOffersRooms']);
 
 Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);

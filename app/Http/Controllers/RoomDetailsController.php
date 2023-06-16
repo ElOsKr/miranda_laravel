@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-
-DB::enableQueryLog();
 
 class RoomDetailsController extends Controller
 {
@@ -42,13 +41,12 @@ class RoomDetailsController extends Controller
             $checkIn = $request->input('checkIn');
             $checkOut = $request->input('checkOut');
             $availability = false;
-            $availablesRooms = Room::query(DB::raw(
-                "select * from rooms"))->whereRaw("room_id not in (select room_id from bookings where
-                                (booking_checkin > $checkIn and booking_checkin < $checkOut) or
-                                (booking_checkout > $checkIn and booking_checkout < $checkOut) or
-                                (booking_checkin > $checkIn and booking_checkout < $checkOut) or
-                                (booking_checkin < $checkIn and booking_checkout > $checkOut)
-                            )"
+            $availablesRooms = Room::select('room_id')
+            ->whereNotIn('room_id',Booking::select('room_id')
+                ->where("booking_checkin",">=",$checkIn)->where("booking_checkin","<=",$checkOut)
+                ->orWhere("booking_checkout",">=",$checkIn)->where("booking_checkout","<=",$checkOut)
+                ->orWhere("booking_checkin",">=",$checkIn)->where("booking_checkout","<=",$checkOut)
+                ->orWhere("booking_checkin","<=",$checkIn)->where("booking_checkout",">=",$checkOut)
             )->get();
 
             foreach($availablesRooms as $key){
@@ -59,12 +57,9 @@ class RoomDetailsController extends Controller
             }
 
             if($availability === true){
-                return back()->with('success', "The room is available between $checkIn and $checkOut".DB::getQueryLog()[0]["query"].count($availablesRooms));  
-            }else{
-                return back()->with('success', "The room is not available between $checkIn and $checkOut".DB::getQueryLog()[0]["query"].count($availablesRooms)); 
-            }
-
-              
+                return back()->with('success', "The room is available between $checkIn and $checkOut");
+            }  
+            return back()->with('success', "The room is not available between $checkIn and $checkOut");
 
         }catch(ModelNotFoundException $e){
             return view('rooms',[
