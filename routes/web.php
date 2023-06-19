@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\RoomDetailsController;
 use App\Http\Controllers\RoomsController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,16 @@ Route::get('/offers', [OffersController::class,'getOffersRooms']);
 Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);
 
 Route::post('/roomDetails/{id}', [RoomDetailsController::class,'checkAvailavility']);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
