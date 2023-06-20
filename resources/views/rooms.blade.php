@@ -11,7 +11,9 @@
             </div>
         </section>
         <section class="rooms-rooms">
-            <p class="room_msg">{{$message}}</p>
+            @if(isset($message))
+                <p class="room_msg">{{$message}}</p>
+            @endif
             <div class="swiper-rooms">
                 <div class="swiper-wrapper">
                     <div class="room__section swiper-slide">
