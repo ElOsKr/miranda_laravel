@@ -36,10 +36,13 @@
                         <li><a href="/rooms">Rooms</a></li>
                         <li><a href="/offers">Offers</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        <li><a href="/orders">Orders</a></li>
                     </ul>
                 </div>
                 <div class="header__content-options">
-                    <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
+                    <a href="/dashboard">
+                        <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
+                    </a>                    
                     <img src="{{asset('./assets/header/header_search_icon.png')}}" alt="searchIcon">
                 </div>
             </div>

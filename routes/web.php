@@ -19,27 +19,31 @@ use App\Http\Controllers\RoomsController;
 |
 */
 
-Route::get('/', [IndexController::class,'view'])->middleware(['auth','verified'])->name("/");
+Route::get('/', [IndexController::class,'view']);
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
-})->middleware(['auth','verified'])->name("/");
+});
 
 Route::get('/contact', function () {
     return view('contact');
-})->middleware(['auth','verified'])->name("/");
+});
 
-Route::post('/contact',[ContactController::class,'contactCreate'])->middleware(['auth','verified'])->name("/");
+Route::get('/orders', function () {
+    return view('orders');
+})->middleware(['auth', 'verified'])->name('orders');
 
-Route::get('/rooms', [RoomsController::class,'view'])->middleware(['auth','verified'])->name("/");
+Route::post('/contact',[ContactController::class,'contactCreate']);
 
-Route::post('/rooms',[RoomsController::class, 'getAvailables'])->middleware(['auth','verified'])->name("/");
+Route::get('/rooms', [RoomsController::class,'view']);
 
-Route::get('/offers', [OffersController::class,'getOffersRooms'])->middleware(['auth','verified'])->name("/");
+Route::post('/rooms',[RoomsController::class, 'getAvailables']);
 
-Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom'])->middleware(['auth','verified'])->name("/");
+Route::get('/offers', [OffersController::class,'getOffersRooms']);
 
-Route::post('/roomDetails/{id}', [RoomDetailsController::class,'checkAvailavility'])->middleware(['auth','verified'])->name("/");
+Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);
+
+Route::post('/roomDetails/{id}', [RoomDetailsController::class,'checkAvailavility']);
 
 
 Route::get('/dashboard', function () {
