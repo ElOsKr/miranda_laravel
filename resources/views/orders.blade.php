@@ -11,7 +11,14 @@
             </div>
         </section>
         <section class="orders">
-            Orders
+            <a href="/orderCreate">Create an order</a>
+            @if(count($orders) === 0)
+                No orders available
+            @else
+                @foreach($orders as $order)
+                    <p>{{$order['type']}}</p>
+                @endforeach
+            @endif
         </section>
     </main>
 @endsection        

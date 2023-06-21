@@ -13,6 +13,12 @@ class RoomsController extends Controller
         return view('rooms',[
             'rooms' => Room::all()
         ]);
+    }
+    
+    public function getRooms(): View {
+        return view('orderCreate',[
+            'rooms' => Room::all()
+        ]);
     } 
     
     
