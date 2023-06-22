@@ -32,6 +32,8 @@ Route::get('/contact', function () {
 
 Route::get('/orders', [OrderController::class, 'index'])->middleware(['auth', 'verified'])->name('orders');
 
+Route::get('/orderEdit', [OrderController::class, 'getOrder'])->middleware(['auth', 'verified'])->name('orderEdit');
+
 Route::post('/contact',[ContactController::class,'contactCreate']);
 
 Route::get('/rooms', [RoomsController::class,'view']);
@@ -40,7 +42,9 @@ Route::post('/rooms',[RoomsController::class, 'getAvailables']);
 
 Route::get('/offers', [OffersController::class,'getOffersRooms']);
 
-Route::post('/orderCreate', [OrderController::class, 'store']);
+Route::post('/order', [OrderController::class, 'store']);
+
+Route::put('/orderEdit', [OrderController::class, 'update'])->name('orders.update');
 
 Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);
 

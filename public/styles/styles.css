@@ -2074,6 +2074,23 @@
     grid-area: 3/1/4/3;
   }
 }
+
+.orders table{
+  text-align: center;
+  margin: 0 auto;
+  border: solid 1px #777777;
+  border-collapse: collapse;
+}
+
+.orders table th,.orders table td{
+  padding: 10px 30px;
+  border-bottom: solid 1px #777777;
+}
+
+.orders-Edit form{
+  text-align: center;
+}
+
 .footer {
   margin-top: 40px;
 }

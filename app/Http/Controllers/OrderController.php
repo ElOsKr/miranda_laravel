@@ -17,6 +17,11 @@ class OrderController extends Controller
         return view('orders', ['orders' => $orders]);
     }
 
+    public function getOrder(Request $request){
+        $order = Order::where('id',$request->input('id'))->get();
+        return view('orderEdit', ['order' => $order[0]]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -35,9 +40,12 @@ class OrderController extends Controller
             'type' => 'required',
             'description' => 'required'
         ]);
+
+        list($id,$number) = explode("&",$request->input('room_id'));
         $order = Order::create([
             'user_id' => Auth::user()->id,
-            'room_id' => $request->input('room_id'), 
+            'room_id' => $id, 
+            'room_number'=> $number,
             'type' => $request->input('type'), 
             'description' => $request->input('description')
         ]);
@@ -66,9 +74,14 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'type' => 'required',
+            'description' => 'required',
+        ]);
+        Order::where('id', $request->input('id'))->update($validateData);
+        return redirect('orders')->with('success');
     }
 
     /**

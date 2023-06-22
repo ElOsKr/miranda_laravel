@@ -11,13 +11,13 @@
             </div>
         </section>
         <section class="orders">
-            <form action="{{url('orderCreate')}}" method="post">
+            <form action="{{url('order')}}" method="post">
             {{ csrf_field() }}
                 <label for="room_id">Room</label>
                 <select name="room_id" id="room_id" required>
                     <option selected disabled hidden value="">Room Type - Room Number</option>
                     @for($i = 0; $i<count($rooms); $i++)
-                        <option value={{$rooms[$i]['room_id']}}>{{$rooms[$i]['room_type']}} - {{$rooms[$i]['room_number']}}</option>
+                        <option value={{$rooms[$i]['room_id'].'&'.$rooms[$i]['room_number']}}>{{$rooms[$i]['room_type']}} - {{$rooms[$i]['room_number']}}</option>
                     @endfor
                 </select>
                 <label for="type">Order type</label>

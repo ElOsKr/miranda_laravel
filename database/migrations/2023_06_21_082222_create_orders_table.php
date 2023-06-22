@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('room_id',120)->collation('utf8mb4_general_ci');
+            $table->integer('room_number');
             $table->enum('type',['food', 'other']);
             $table->string('description');
             $table->foreign('user_id')->references('id')->on('laravel_users')->onDelete('cascade');
