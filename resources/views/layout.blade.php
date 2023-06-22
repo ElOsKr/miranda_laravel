@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{asset('/assets/logomiranda.ico')}}">
     <link rel="stylesheet" href="{{asset('styles/styles.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,11 +37,16 @@
                         <li><a href="/rooms">Rooms</a></li>
                         <li><a href="/offers">Offers</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        <li><a href="/orders">Orders</a></li>
                     </ul>
                 </div>
                 <div class="header__content-options">
-                    <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
-                    <img src="{{asset('./assets/header/header_search_icon.png')}}" alt="searchIcon">
+                    <a href="/dashboard">
+                        <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
+                    </a>
+                    <a href="/rooms">
+                        <img src="{{asset('./assets/header/header_search_icon.png')}}" alt="searchIcon">
+                    </a>                    
                 </div>
             </div>
         </nav>
