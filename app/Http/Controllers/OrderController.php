@@ -52,7 +52,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        return back()->with('success', "Order sent succesfully");
+        return redirect('orders')->with('success', "Order sent succesfully");
     }
 
     /**
@@ -81,14 +81,15 @@ class OrderController extends Controller
             'description' => 'required',
         ]);
         Order::where('id', $request->input('id'))->update($validateData);
-        return redirect('orders')->with('success');
+        return redirect('orders')->with('success','Order updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        Order::destroy($request->input('id'));
+        return back()->with("success",'Order deleted');
     }
 }

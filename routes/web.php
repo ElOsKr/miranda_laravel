@@ -32,7 +32,15 @@ Route::get('/contact', function () {
 
 Route::get('/orders', [OrderController::class, 'index'])->middleware(['auth', 'verified'])->name('orders');
 
+Route::delete('/orders', [OrderController::class, 'destroy'])->middleware(['auth', 'verified'])->name('orders');
+
 Route::get('/orderEdit', [OrderController::class, 'getOrder'])->middleware(['auth', 'verified'])->name('orderEdit');
+
+Route::put('/orderEdit', [OrderController::class, 'update'])->name('orders.update');
+
+Route::get('/orderCreate',[RoomsController::class,'getRooms'])->middleware(['auth', 'verified'])->name('orderCreate');
+
+Route::post('/order', [OrderController::class, 'store']);
 
 Route::post('/contact',[ContactController::class,'contactCreate']);
 
@@ -42,16 +50,9 @@ Route::post('/rooms',[RoomsController::class, 'getAvailables']);
 
 Route::get('/offers', [OffersController::class,'getOffersRooms']);
 
-Route::post('/order', [OrderController::class, 'store']);
-
-Route::put('/orderEdit', [OrderController::class, 'update'])->name('orders.update');
-
 Route::get('/roomDetails/{id}', [RoomDetailsController::class,'getRoom']);
 
 Route::post('/roomDetails/{id}', [RoomDetailsController::class,'checkAvailavility']);
-
-Route::get('/orderCreate',[RoomsController::class,'getRooms'])->middleware(['auth', 'verified'])->name('orderCreate');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

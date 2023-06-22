@@ -15,13 +15,19 @@
             {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{$order['id']}}">
                 <h1>Room Description</h1>
-                <h3>Room Number {{$order['room_number']}}</h3>
+                <h3>Room Number: {{$order['room_number']}}</h3>
                 <label for="type">Order type</label>
-                Food<input type="radio" value="food" name="type" id="food" required {{$order['type']==="food"? "checked" : ""}}>
-                Other<input type="radio" value="other" name="type" id="other" {{$order['type']==="other"? "checked" : ""}}>
-                <label for="description">Description</label>
-                <textarea placeholder="Order Description..." required name="description" id="description">{{$order['description']}}</textarea>
-                <input type="submit" value="Save Changes">
+                <div>
+                    Food
+                    <input type="radio" value="food" name="type" id="food" required {{$order['type']==="food"? "checked" : ""}}>
+                </div>
+                <div>
+                    Other
+                    <input type="radio" value="other" name="type" id="other" {{$order['type']==="other"? "checked" : ""}}>
+                </div>              
+                <p><label for="description">Description</label></p>
+                <textarea placeholder="Order Description..." required name="description" id="description" rows="5" maxlength="255">{{$order['description']}}</textarea>
+                <input type="submit" value="Save Changes" class="orderEdit">
             </form>
         </section>
     </main>

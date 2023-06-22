@@ -2075,9 +2075,30 @@
   }
 }
 
+.orders{
+  text-align: center;
+  padding-top: 40px;
+}
+
+.orders .orderSuccess{
+  color: green;
+  font-size: 30px;
+}
+
+.orders .orders__noOrders{
+  text-align: center;
+  margin: 20px 0;
+  font-size: 40px;
+}
+
+.orders .orders__ordersCreate{
+  color: #777777;
+  font-size: 20px;
+}
+
 .orders table{
   text-align: center;
-  margin: 0 auto;
+  margin: 10px auto;
   border: solid 1px #777777;
   border-collapse: collapse;
 }
@@ -2085,6 +2106,93 @@
 .orders table th,.orders table td{
   padding: 10px 30px;
   border-bottom: solid 1px #777777;
+}
+
+.order__description{
+  max-width: 250px;
+  word-wrap: break-word;
+}
+
+@media only screen and (max-width: 1000px) {
+  .orders table th,.orders table td{
+    padding: 5px 5px;
+  }
+
+  .order__description{
+    font-size: 15px;
+    max-width: 90px;
+  }
+}
+
+.orders-Create{
+  padding-top: 20px;
+}
+
+.ordersBack{
+  color: black;
+  font-family: var(--font-Roboto);
+  margin-left: 30%;
+}
+
+.orders-Create form{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  align-items: center;
+  margin: 30px auto;
+  gap: 20px;
+  font-family: var(--font-Roboto);
+  flex-wrap: wrap;
+}
+
+.orders-Create textarea{
+  resize: none;
+}
+
+.orders-Create .createSubmit{
+  flex-basis: 40%;
+  color: white;
+  padding: 20px 0px;
+  font-family: var(--font-Roboto);
+  font-weight: 700;
+  letter-spacing: 3px;
+  border: 1px solid #BEAD8E;
+  background-color: #BEAD8E;
+  cursor: pointer;
+}
+
+.orders-Create .type{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.orders-Edit{
+  padding: 20px;
+  font-family: var(--font-Roboto);
+}
+
+.orders-Edit h3{
+  margin: 10px 0;
+}
+
+.orders-Edit textarea{
+  resize: none;
+}
+
+.orders-Edit .orderEdit{
+  display: block;
+  margin: 0 auto;
+  color: white;
+  padding: 20px 20px;
+  font-family: var(--font-Roboto);
+  font-weight: 700;
+  letter-spacing: 3px;
+  border: 1px solid #BEAD8E;
+  background-color: #BEAD8E;
+  cursor: pointer;
 }
 
 .orders-Edit form{

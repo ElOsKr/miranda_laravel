@@ -10,10 +10,21 @@
             </div>
         </section>
         <section class="orders">
-            <a href="/orderCreate">Create an order</a>
+            @if(Session::has('success'))
+                <p id="formSuccess" class="orderSuccess">
+                    {{ Session::get('success') }}
+                    @php
+                        Session::forget('success');
+                    @endphp
+                </p>
+            @endif
             @if(count($orders) === 0)
-                No orders available
+                <h1 class="orders__noOrders">
+                   No orders available 
+                </h1>
+                <a href="/orderCreate" class="orders__ordersCreate">Create an order</a>
             @else
+                <a href="/orderCreate" class="orders__ordersCreate">Create an order</a>
                 <table>
                     <thead>
                         <tr>
@@ -26,7 +37,7 @@
                             <th>
                                 Message
                             </th>
-                            <th rowspan="2">
+                            <th colspan="2">
                                 Actions
                             </th>                            
                         </tr>
@@ -40,18 +51,23 @@
                                 <td>
                                     {{$order['type']}}
                                 </td>
-                                <td>
+                                <td class="order__description">
                                     {{$order['description']}}
                                 </td>
                                 <td>
                                     <form action="{{url('orderEdit')}}" method="get">
                                     {{ csrf_field() }}
                                         <input type="hidden" name="id" id="id" value="{{$order['id']}}">
-                                        <input type="submit" value="Edit">
+                                        <input type="image" value="Edit" alt="edit" src="{{asset('/assets/orders/editIcon.png')}}" width="20" height="20">
                                     </form>
                                 </td>
                                 <td>
-
+                                    <form action="{{url('orders')}}" method="post">
+                                    {{ csrf_field() }}
+                                    @method('DELETE')
+                                        <input type="hidden" name="id" id="id" value="{{$order['id']}}">
+                                        <input type="image" value="Delete" alt="delete" src="{{asset('/assets/orders/deleteIcon.png')}}" width="20" height="20">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
