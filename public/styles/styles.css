@@ -686,6 +686,12 @@
   .facilities .swiper-features .swiper-wrapper .swiper-slide {
     width: 100% !important;
   }
+  .facilities__feature{
+    transition: all .3s;
+  }
+  .facilities__feature:hover{
+    transform: scale(1.07)!important;
+  }
 }
 .menu {
   padding: 20px;
