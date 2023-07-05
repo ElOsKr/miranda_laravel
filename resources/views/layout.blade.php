@@ -52,7 +52,7 @@
                         <a href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                            <img src="{{asset('./assets/header/header_logout_icon.png')}}" alt="userIcon" style="width:44px;height:44px">
+                            <img src="{{asset('./assets/header/header_logout_icon.png')}}" alt="logoutIcon" class="logoutIcon">
                         </a>
                         </form>
                     @endif
