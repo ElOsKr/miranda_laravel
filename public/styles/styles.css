@@ -89,6 +89,11 @@
   cursor: pointer;
 }
 
+.logoutIcon{
+  width: 20px;
+  height: 20px;
+}
+
 @media only screen and (min-width: 1000px) {
   .header {
     position: relative;
@@ -100,7 +105,7 @@
   .header__nav {
     position: fixed;
     background-color: white;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     transform: translateY(40px);
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.29);
@@ -153,6 +158,10 @@
   .transition-top {
     transform: translateY(-200px);
     transition: all 1s ease-out;
+  }
+  .logoutIcon{
+    width: 44px;
+    height: 44px;
   }
 }
 .introduction {
@@ -685,6 +694,12 @@
   }
   .facilities .swiper-features .swiper-wrapper .swiper-slide {
     width: 100% !important;
+  }
+  .facilities__feature{
+    transition: all .3s;
+  }
+  .facilities__feature:hover{
+    transform: scale(1.07)!important;
   }
 }
 .menu {

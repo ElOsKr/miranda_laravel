@@ -41,9 +41,21 @@
                     </ul>
                 </div>
                 <div class="header__content-options">
-                    <a href="/dashboard">
-                        <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
-                    </a>
+                    @if(!Auth::user())
+                        <a href="/login">
+                            <img src="{{asset('./assets/header/header_user_icon.png')}}" alt="userIcon">
+                        </a>
+                    @else
+                        <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <a href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            <img src="{{asset('./assets/header/header_logout_icon.png')}}" alt="logoutIcon" class="logoutIcon">
+                        </a>
+                        </form>
+                    @endif
                     <a href="/rooms">
                         <img src="{{asset('./assets/header/header_search_icon.png')}}" alt="searchIcon">
                     </a>                    
